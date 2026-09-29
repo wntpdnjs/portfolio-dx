@@ -22,7 +22,10 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export default function Home() {
-  const contacts = [{ label: p.ui.email, value: p.contact.email, placeholder: p.contact.emailPlaceholder, href: p.contact.email ? `mailto:${p.contact.email}` : "", icon: "mail" }, { label: p.ui.github, value: p.contact.github, placeholder: p.contact.githubPlaceholder, href: p.contact.github, icon: "code" }];
+  const contacts = [
+    { label: p.ui.email, value: p.contact.email, href: `mailto:${p.contact.email}`, icon: "mail" },
+    { label: p.ui.phone, value: p.contact.phone, href: `tel:${p.contact.phone.replaceAll("-", "")}`, icon: "phone" },
+  ];
   return <>
     <ScrollButton to="main" className="skip-link">{p.ui.skip}</ScrollButton>
     <SiteHeader />
@@ -40,7 +43,7 @@ export default function Home() {
       <section id="skills" tabIndex={-1} className="container section section-bordered"><SectionHeading section={p.sections.skills}/><div className="skills-grid">{p.skills.map((group, i) => <article key={group.title}><div className="skill-title"><Icon name={["model", "backend", "code"][i]}/><h3>{group.title}</h3></div><div className="skill-tags">{group.items.map(skill => <span key={skill}>{skill}</span>)}</div></article>)}</div></section>
       <section id="awards" tabIndex={-1} className="container section section-bordered"><SectionHeading section={p.sections.awards}/><div className="awards-list">{p.awards.map(award => <article key={award.title}><span className="award-icon"><Icon name="award"/></span><h3>{award.title}</h3><span className="award-project">{award.project}</span><strong>{award.prize}</strong></article>)}</div></section>
       <div className="why-band"><section id="why" tabIndex={-1} className="container section"><SectionHeading section={p.sections.why}/><p className="why-copy">{p.why}</p><div className="why-signature"><span className="status-dot"/>AI Product · Backend · Operations<Icon name="arrow"/></div></section></div>
-      <section id="contact" tabIndex={-1} className="container section"><SectionHeading section={p.sections.contact}/><p className="contact-description">{p.contact.description}</p><div className="contact-grid">{contacts.map(contact => {const content = <><span className="icon-box"><Icon name={contact.icon}/></span><div><span className="contact-label">{contact.label}</span><span className="contact-value">{contact.value || contact.placeholder}</span>{!contact.value && <span className="placeholder-note">{p.contact.placeholderNote}</span>}</div>{contact.value && <Icon name="external"/>}</>;return contact.href ? <a key={contact.label} className="contact-card" href={contact.href} target="_blank" rel="noopener noreferrer">{content}</a> : <div key={contact.label} className="contact-card">{content}</div>;})}</div></section>
+      <section id="contact" tabIndex={-1} className="container section"><SectionHeading section={p.sections.contact}/><p className="contact-description">{p.contact.description}</p><div className="contact-grid">{contacts.map(contact => <a key={contact.label} className="contact-card" href={contact.href} target="_blank" rel="noopener noreferrer"><span className="icon-box"><Icon name={contact.icon}/></span><div><span className="contact-label">{contact.label}</span><span className="contact-value">{contact.value}</span></div><Icon name="external"/></a>)}</div></section>
     </main><footer className="site-footer"><div className="container footer-inner"><div><p>© {p.year} {p.ui.footer}</p><span>{p.ui.footerNote}</span></div><ScrollButton to="top" className="top-button">{p.ui.toTop}<Icon name="up"/></ScrollButton></div></footer>
   </>;
 }

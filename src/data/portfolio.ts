@@ -48,8 +48,8 @@ export const portfolio = {
   skills: [{ title: "AI / ML", items: ["Python", "PyTorch", "OCR", "Computer Vision", "DETR", "VLM"] }, { title: "Backend", items: ["REST API", "Spring Boot", "Redis", "Database"] }, { title: "Environment", items: ["Linux", "Ubuntu", "Git", "GPU Server"] }],
   awards: [{ title: "산학연계 SW프로젝트 전시회", prize: "우수상", project: "ClassLog" }, { title: "하나 디지털 파워온", prize: "우수상", project: "STOCKER" }, { title: "Tech4Good 해커톤", prize: "장려상", project: "식물 판별 및 정보 검증" }, { title: "Pay 핀테크 해커톤", prize: "장려상", project: "AI 기반 소비 관리" }],
   why: "모델 성능 개선과 함께 제품 반영, 고객 일정, 운영 이슈를 맡아 왔습니다. AI 개발과 백엔드 경험을 바탕으로 현장의 요구를 기능과 시스템으로 구현하고, 배포 이후까지 책임지는 DX Engineer로 기여하겠습니다.",
-  contact: { description: "AI 제품 개발과 서비스 적용 경험에 대해 이야기 나누고 싶습니다.", email: "joosewon@naver.com", emailPlaceholder: "joosewon@naver.com", placeholderNote: "010-8652-7129" },
-  ui: { navigation: "주요 섹션", skip: "본문으로 건너뛰기", contact: "연락처", problem: "과제", role: "담당", solution: "실행", outcome: "성과 및 적용", github: "GitHub", metricHeading: "대표 성과", email: "Email", toTop: "맨 위로", footer: "주세원 · DX Engineer Portfolio", footerNote: "AI Product · Backend · Operations" }
+  contact: { description: "AI 제품 개발과 서비스 적용 경험에 대해 이야기 나누고 싶습니다.", email: "joosewon@naver.com", phone: "010-8652-7129" },
+  ui: { navigation: "주요 섹션", skip: "본문으로 건너뛰기", contact: "연락처", problem: "과제", role: "담당", solution: "실행", outcome: "성과 및 적용", github: "GitHub", metricHeading: "대표 성과", email: "Email", phone: "Phone", toTop: "맨 위로", footer: "주세원 · DX Engineer Portfolio", footerNote: "AI Product · Backend · Operations" }
 };
 
 export const projects: Project[] = [
