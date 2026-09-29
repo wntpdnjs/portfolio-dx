@@ -40,3 +40,34 @@ test("키보드로 본문 건너뛰기", async ({ page }) => {
   await page.keyboard.press("Enter");
   await expect(page.locator("main")).toBeFocused();
 });
+
+test("프로젝트 상세 모달 열기와 닫기", async ({ page }) => {
+  await page.goto("/");
+  const projectCard = page.getByRole("button", { name: "Japanese OCR Improvement 상세 보기" });
+  await projectCard.click();
+
+  const dialog = page.getByRole("dialog", { name: "Japanese OCR Improvement" });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByText("OCR 모델 개발 및 제품 연동")).toBeVisible();
+  await expect(dialog.getByText("17.03% → 93.61%", { exact: true })).toBeVisible();
+  await expect(page.locator("body")).toHaveCSS("overflow", "hidden");
+  await expect(page.getByRole("button", { name: "프로젝트 상세 닫기" })).toBeFocused();
+  await page.screenshot({ path: "test-results/project-modal-desktop.png", fullPage: false });
+
+  await page.keyboard.press("Escape");
+  await expect(dialog).not.toBeVisible();
+  await expect(projectCard).toBeFocused();
+
+  await page.getByRole("button", { name: "Document Structure Recognition 상세 보기" }).click();
+  await page.locator(".modal-overlay").click({ position: { x: 5, y: 5 } });
+  await expect(page.getByRole("dialog")).not.toBeVisible();
+});
+
+test("모바일 프로젝트 모달은 한 열로 표시", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page.getByRole("button", { name: "ClassLog 상세 보기" }).click();
+  await expect(page.getByRole("dialog", { name: "ClassLog" })).toBeVisible();
+  expect(await page.locator(".modal-content-grid").evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length)).toBe(1);
+  await page.screenshot({ path: "test-results/project-modal-mobile.png", fullPage: false });
+});

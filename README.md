@@ -151,12 +151,16 @@ src/app/layout.tsx                SEO와 한국어 문서 설정
 src/app/globals.css               디자인과 반응형 스타일
 src/components/site-header.tsx    섹션 내비게이션
 src/components/scroll-button.tsx  페이지 내부 이동
+src/components/featured-projects.tsx 프로젝트 카드와 상세 모달
 src/components/icon.tsx           SVG 아이콘
 src/data/portfolio.ts             모든 문구와 프로젝트 데이터
 public/icon.svg                   파비콘
+public/awards/                    웹용 상장 이미지
 tests/portfolio.spec.ts           반응형·접근성 브라우저 검사
 next.config.ts                    정적 내보내기 설정
 ```
+
+Featured Projects의 상세 내용은 `src/data/portfolio.ts`에 있는 각 프로젝트의 `modalDetails`에서 수정합니다. 상장 이미지를 교체할 때는 `public/awards/`에 같은 파일명으로 저장하거나, `portfolio.awards`의 `image` 경로와 `alt` 설명을 함께 변경합니다.
 
 ## 배포 문제 해결
 
